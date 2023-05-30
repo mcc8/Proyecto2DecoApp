@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  decoappBD:
+    container_name: decoBD
+    image: daw22303/sqlserver:v3
+    ports:
+    - 8002:1433
+    environment:
+    - ACCEPT_EULA=Y
+    - SA_PASSWORD=password1234*5
+
+  decoapp4:
+    container_name: decoApp
+    image: daw22303/decoapp4:v3
+    ports:
+    - 8001:80
+    depends_on:
+    - decoappBD
+
